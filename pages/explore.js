@@ -12,17 +12,35 @@ export default function Explore() {
 	const { user } = useGlobalContext()
 
 	const [data, setData] = useState([])
-	const [type, setType] = useState('attractions')
+	const [type, setType] = useState('restaurants')
 
 	const [anchor, setAnchor] = useState([11.2588, 75.7804])
 	const [center, setCenter] = useState([11.2588, 75.7804])
 
-	const [lat, setLat] = useState([11.2588, 11.285])
-	const [long, setLong] = useState([75.7804, 75.8])
-
 	const [zoom, setZoom] = useState(11)
+	const [place, setPlace] = useState('')
 
 	const [loader, setLoader] = useState(false)
+
+	function handleChange(e) {
+		setPlace(e.target.value)
+		console.log(place)
+	}
+
+	function handleApply() {
+		async function getLocation() {
+			const params = {
+				access_key: '3d8576ab0112b7d771c4d036de518c2b',
+				query: place,
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			}
+			const response = await axios.get('http://api.positionstack.com/v1/forward', { params })
+			setAnchor([response?.data?.data[0]?.latitude, response?.data?.data[0]?.longitude])
+		}
+		getLocation()
+	}
 
 	useEffect(() => {
 		async function getData() {
@@ -32,10 +50,10 @@ export default function Explore() {
 				method: 'GET',
 				url: `https://travel-advisor.p.rapidapi.com/${type}/list-in-boundary`,
 				params: {
-					tr_longitude: anchor[1] + 0.01,
-					tr_latitude: anchor[0] + 0.01,
-					bl_longitude: anchor[1] - 0.01,
-					bl_latitude: anchor[0] - 0.01,
+					tr_longitude: anchor[1] + 0.03,
+					tr_latitude: anchor[0] + 0.03,
+					bl_longitude: anchor[1] - 0.03,
+					bl_latitude: anchor[0] - 0.03,
 					currency: 'INR',
 					lunit: 'km',
 					lang: 'en_US',
@@ -51,7 +69,7 @@ export default function Explore() {
 			setLoader(false)
 		}
 		getData()
-	}, [type, anchor])
+	}, [anchor])
 	return (
 		<div className={styles['container']}>
 			<Navbar color='black' border='1px solid #C0C0C0' position='fixed' bg='#f7f7f7' />
@@ -76,6 +94,33 @@ export default function Explore() {
 							</Map>
 						</div>
 					</div>
+					<FieldInput
+						placeholder='Enter a place'
+						name='place'
+						value={place}
+						onChange={handleChange}
+					/>
+					<div className={styles['filter-button-wrapper']}>
+						<FilterButton
+							value='hotels'
+							name='Hotels'
+							checked={type == 'hotels'}
+							onClick={() => setType('hotels')}
+						/>
+						<FilterButton
+							value='restaurants'
+							name='Restaurants'
+							checked={type == 'restaurants'}
+							onClick={() => setType('restaurants')}
+						/>
+						<FilterButton
+							value='attractions'
+							name='Attractions'
+							checked={type == 'attractions'}
+							onClick={() => setType('attractions')}
+						/>
+					</div>
+					<img src='/apply.svg' onClick={handleApply} className={styles['apply']} />
 				</div>
 				<div className={styles['right']}>
 					<div className={styles['total-results']}>
@@ -107,6 +152,34 @@ export default function Explore() {
 				</div>
 			</div>
 			<Loader show={loader} />
+		</div>
+	)
+}
+function FieldInput({ placeholder, name, value, onChange }) {
+	return (
+		<div className={styles['ti-container']}>
+			<div className={styles['ti-cover']}>
+				<img src='/search.svg' />
+			</div>
+			<input
+				className={styles['text-input']}
+				name={name}
+				value={value}
+				placeholder={placeholder}
+				onChange={onChange}
+			/>
+		</div>
+	)
+}
+
+function FilterButton({ name, checked, onClick }) {
+	return (
+		<div
+			className={`${styles['filter-container']} ${checked ? styles['checked'] : ''}`}
+			onClick={onClick}
+		>
+			<img src='/tick.svg' />
+			{name}
 		</div>
 	)
 }
