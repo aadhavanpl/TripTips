@@ -13,6 +13,7 @@ export default function Explore() {
 
 	const [data, setData] = useState([])
 	const [type, setType] = useState('restaurants')
+	const [cardType, setCardType] = useState('restaurants')
 
 	const [anchor, setAnchor] = useState([11.2588, 75.7804])
 	const [center, setCenter] = useState([11.2588, 75.7804])
@@ -24,11 +25,11 @@ export default function Explore() {
 
 	function handleChange(e) {
 		setPlace(e.target.value)
-		console.log(place)
 	}
 
 	function handleApply() {
 		async function getLocation() {
+			setLoader(true)
 			const params = {
 				access_key: '3d8576ab0112b7d771c4d036de518c2b',
 				query: place,
@@ -38,6 +39,7 @@ export default function Explore() {
 			}
 			const response = await axios.get('http://api.positionstack.com/v1/forward', { params })
 			setAnchor([response?.data?.data[0]?.latitude, response?.data?.data[0]?.longitude])
+			setLoader(false)
 		}
 		getLocation()
 	}
@@ -45,7 +47,6 @@ export default function Explore() {
 	useEffect(() => {
 		async function getData() {
 			setLoader(true)
-			console.log(anchor[0], anchor[1])
 			const options = {
 				method: 'GET',
 				url: `https://travel-advisor.p.rapidapi.com/${type}/list-in-boundary`,
@@ -66,6 +67,7 @@ export default function Explore() {
 			const response = await axios.request(options)
 			console.log(response)
 			setData(response.data.data)
+			setCardType(type)
 			setLoader(false)
 		}
 		getData()
@@ -136,7 +138,7 @@ export default function Explore() {
 									<Card
 										name={item?.name}
 										ranking={item?.ranking}
-										type={type}
+										type={cardType}
 										photo={item?.photo?.images?.medium?.url}
 										rating={item?.rating}
 										num_reviews={item?.num_reviews}

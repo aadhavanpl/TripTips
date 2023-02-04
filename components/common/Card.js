@@ -18,9 +18,6 @@ export default function Card({
 	description,
 	user_email,
 }) {
-	useEffect(() => {
-		console.log(rating)
-	})
 	async function handleLike() {
 		const data = {
 			user_email: user_email,
@@ -68,9 +65,12 @@ export default function Card({
 							<div className={styles['right-top-right']}>
 								<div className={styles['right-top-right-top']}>
 									{web_url && (
-										<Link href={web_url}>
-											<img src='/share.svg' />
-										</Link>
+										<img
+											src='/share.svg'
+											onClick={() => {
+												navigator.clipboard.writeText(web_url)
+											}}
+										/>
 									)}
 									<img src='/like.svg' onClick={handleLike} />
 								</div>
@@ -84,9 +84,10 @@ export default function Card({
 							<div className={styles['right-bottom-left']}>
 								<div className={styles['right-bottom-left-top']}>
 									<div className={styles['stars-wrapper']}>
-										{[...Array(Math.ceil(Number(rating)))].map((e, index) => (
-											<img src='/star.svg' key={index} />
-										))}
+										{rating &&
+											[...Array(Math.ceil(Number(rating)))].map((e, index) => (
+												<img src='/star.svg' key={index} />
+											))}
 									</div>
 									<div className={styles['right-bottom-left-top-right']}>
 										<img src='/users.svg' />
