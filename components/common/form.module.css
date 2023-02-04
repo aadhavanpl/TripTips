@@ -1,0 +1,46 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 21px;
+}
+
+.wrapper {
+	display: flex;
+	justify-content: space-between;
+	height: 36px;
+
+	font-weight: 500;
+	font-size: 12px;
+	line-height: 18px;
+	color: #7e7e7e;
+
+	cursor: pointer;
+	border-radius: 6px;
+}
+
+.select {
+	appearance: none;
+	border-width: 0;
+
+	background-color: #ffffff;
+	background-image: url('/small-drop-down-arrow.svg');
+	background-repeat: no-repeat;
+	background-position: right 14px center;
+
+	font-family: 'Poppins';
+	font-weight: 500;
+	font-size: 12px;
+	line-height: 18px;
+	color: #7e7e7e;
+
+	cursor: pointer;
+	padding: 0px 14px;
+	border-radius: 6px;
+}
+
+.select:focus {
+	outline: none;
+}

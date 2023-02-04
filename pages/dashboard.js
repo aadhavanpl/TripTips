@@ -5,7 +5,6 @@ import Navbar from '@/components/home/Navbar'
 
 import { useGlobalContext } from '@/lib/global-context'
 import Card from '@/components/common/Card'
-import { async } from '@firebase/util'
 
 export default function Dashboard() {
 	const { user } = useGlobalContext()

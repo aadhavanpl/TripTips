@@ -97,7 +97,6 @@ export default function Card({
 									)}
 								</div>
 								{is_closed ? <img src='/closed.svg' /> : <img src='/open.svg' />}
-								<div className={styles['right-top-right-bottom']}></div>
 							</div>
 						</div>
 

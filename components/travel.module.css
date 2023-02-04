@@ -1,0 +1,81 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-top: 130px;
+}
+
+.filter-wrapper {
+	display: flex;
+	gap: 30px;
+	align-items: center;
+	height: 123px;
+	width: 1268px;
+	background-color: #edeeee;
+	border-radius: 20px;
+	justify-content: center;
+}
+
+.filter-i {
+	margin-bottom: 16px;
+}
+.apply {
+	margin-top: 26px;
+	cursor: pointer;
+	-webkit-transition: 0.3s ease;
+	transition: 0.3s ease;
+}
+
+.apply:hover {
+	scale: 1.07;
+}
+/* input field */
+
+.ti-container {
+	width: 341px;
+	height: 36px;
+	display: flex;
+	align-items: center;
+	margin-top: 40px;
+	background-color: #ffffff;
+	border-radius: 10px;
+}
+
+.ti-cover {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 36px;
+	height: 36px;
+}
+
+.text-input {
+	width: 297px;
+	height: 36px;
+	background-color: #ffffff;
+	appearance: none;
+	border-width: 0;
+	font-family: 'Poppins';
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 24px;
+	color: black;
+	border-top-right-radius: 8px;
+	border-bottom-right-radius: 8px;
+}
+
+.text-input::placeholder {
+	font-family: 'Poppins';
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 24px;
+	color: #c0c0c0;
+}
+
+.text-input:focus {
+	outline: none;
+}
+
+.content {
+	display: flex;
+}
