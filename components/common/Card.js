@@ -1,6 +1,6 @@
 import { async } from '@firebase/util'
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from './card.module.css'
 
 export default function Card({
@@ -18,6 +18,9 @@ export default function Card({
 	description,
 	user_email,
 }) {
+	useEffect(() => {
+		console.log(rating)
+	})
 	async function handleLike() {
 		const data = {
 			user_email: user_email,
@@ -80,7 +83,11 @@ export default function Card({
 						<div className={styles['right-bottom']}>
 							<div className={styles['right-bottom-left']}>
 								<div className={styles['right-bottom-left-top']}>
-									{rating && <img src='/stars.svg' />}
+									<div className={styles['stars-wrapper']}>
+										{[...Array(Math.ceil(Number(rating)))].map((e, index) => (
+											<img src='/star.svg' key={index} />
+										))}
+									</div>
 									<div className={styles['right-bottom-left-top-right']}>
 										<img src='/users.svg' />
 										{num_reviews}

@@ -94,33 +94,35 @@ export default function Explore() {
 							</Map>
 						</div>
 					</div>
-					<FieldInput
-						placeholder='Enter a place'
-						name='place'
-						value={place}
-						onChange={handleChange}
-					/>
-					<div className={styles['filter-button-wrapper']}>
-						<FilterButton
-							value='hotels'
-							name='Hotels'
-							checked={type == 'hotels'}
-							onClick={() => setType('hotels')}
+					<div className={styles['search-wrapper']}>
+						<FieldInput
+							placeholder='Enter a place'
+							name='place'
+							value={place}
+							onChange={handleChange}
 						/>
-						<FilterButton
-							value='restaurants'
-							name='Restaurants'
-							checked={type == 'restaurants'}
-							onClick={() => setType('restaurants')}
-						/>
-						<FilterButton
-							value='attractions'
-							name='Attractions'
-							checked={type == 'attractions'}
-							onClick={() => setType('attractions')}
-						/>
+						<div className={styles['filter-button-wrapper']}>
+							<FilterButton
+								value='hotels'
+								name='Hotels'
+								checked={type == 'hotels'}
+								onClick={() => setType('hotels')}
+							/>
+							<FilterButton
+								value='restaurants'
+								name='Restaurants'
+								checked={type == 'restaurants'}
+								onClick={() => setType('restaurants')}
+							/>
+							<FilterButton
+								value='attractions'
+								name='Attractions'
+								checked={type == 'attractions'}
+								onClick={() => setType('attractions')}
+							/>
+						</div>
+						<img src='/apply.svg' onClick={handleApply} className={styles['apply']} />
 					</div>
-					<img src='/apply.svg' onClick={handleApply} className={styles['apply']} />
 				</div>
 				<div className={styles['right']}>
 					<div className={styles['total-results']}>
