@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react'
+import Hero from '@/components/home/Hero'
 import Head from 'next/head'
 import axios from 'axios'
+import { useEffect, useState } from 'react'
 import Card from '@/components/common/Card'
 
 import { useGlobalContext } from '@/lib/global-context'
