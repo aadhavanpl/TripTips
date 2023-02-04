@@ -1,31 +1,29 @@
+import Link from 'next/link'
 import React from 'react'
 import styles from './hero.module.css'
+import Navbar from './Navbar'
 
 export default function Hero() {
-  return (
-    <div className={styles['container']}>
-        <div className={styles['top']}>
-            <div className={styles['navbar']}>
-                <img src='/logo.svg' className={styles['logo']} />
-                <div className={styles['nav-wrapper']}>
-                    <div className={styles['home']}>Home</div>
-                    <div className={styles['explore']}>Explore</div>
-                    <div className={styles['contact']}>Contact</div>
-                </div>
-                <img src='/google.svg' className={styles['google']} />
-            </div>
-        </div>
-        <div className={styles['middle']}>
-            <div className={styles['title']}>Take a break...</div>
-            <div className={styles['bottom']}>
-                <img src='/explore-now.svg' className={styles['explore-now']} />
-            </div>
-            <div className={styles['footer']}>
-                <img src='/attach.svg' className={styles['attach-img']} />
-                <img src='/instagram.svg' className={styles['instagram-img']} />
-                <img src='/twitter.svg' className={styles['twitter-img']} />
-            </div>
-        </div>
-    </div>
-  )
+	return (
+		<div className={styles['container']}>
+			<Navbar color='#ffffff' />
+			<div className={styles['middle']}>
+				<div className={styles['title']}>Take a break...</div>
+				<Link href='/explore'>
+					<img src='/explore-now.svg' className={styles['explore-now']} />
+				</Link>
+				<div className={styles['footer']}>
+					<Link href='https://mockstock.live'>
+						<img src='/attach.svg' className={styles['attach-img']} />
+					</Link>
+					<Link href='https://www.instagram.com/aadhavan_lenin/'>
+						<img src='/instagram.svg' className={styles['instagram-img']} />
+					</Link>
+					<Link href='https://twitter.com/RiazSahel'>
+						<img src='/twitter.svg' className={styles['twitter-img']} />
+					</Link>
+				</div>
+			</div>
+		</div>
+	)
 }

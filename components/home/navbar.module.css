@@ -32,18 +32,17 @@
 	line-height: 27px;
 	color: #ffffff;
 	width: 75px;
-	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
-.nav-wrapper span {
+.nav-link {
 	cursor: pointer;
 	-webkit-transition: 0.3s ease;
 	transition: 0.3s ease;
 }
 
-.nav-wrapper span:hover {
+.nav-link:hover {
 	scale: 1.05;
 }
 

@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import styles from './navbar.module.css'
 import { useGlobalContext } from '@/lib/global-context'
 
-export default function Navbar({ color, border, position, bg, height }) {
+export default function Navbar({ color, border, position, bg, height, userInfo }) {
 	const { signIn, user } = useGlobalContext()
 	return (
 		<div
@@ -16,23 +16,33 @@ export default function Navbar({ color, border, position, bg, height }) {
 				</div>
 			</Link>
 			<div className={styles['nav-wrapper']}>
-				<span style={{ color: color }}>
-					<Link href='/'>Home</Link>
-				</span>
-				<span style={{ color: color }}>
-					<Link href='/explore'>Explore</Link>
-				</span>
-				<span style={{ color: color }}>
-					<Link href='/contact'>Contact</Link>
-				</span>
+				<Link href='/'>
+					<span style={{ color: color }} className={styles['nav-link']}>
+						Home
+					</span>
+				</Link>
+				<Link href='/explore'>
+					<span style={{ color: color }} className={styles['nav-link']}>
+						Explore
+					</span>
+				</Link>
+				<Link href='/contact'>
+					<span style={{ color: color }} className={styles['nav-link']}>
+						Contact
+					</span>
+				</Link>
 			</div>
-
 			{user?.length > 0 ? (
 				<div className={styles['login-wrapper']}>
-					<div className={styles['user-info']}>
-						{user[0]?.displayName}
-						<span>{user[0]?.email}</span>
-					</div>
+					{userInfo ? (
+						<div className={styles['user-info']} style={{ color: color }}>
+							{user[0]?.displayName}
+							<span>{user[0]?.email}</span>
+						</div>
+					) : (
+						<></>
+					)}
+
 					<Link href='/dashboard'>
 						<img src={user[0]?.photoURL} />
 					</Link>

@@ -1,89 +1,92 @@
 .container {
-    height: 100vh;
-    width: 100vw;
-    background-image: url('/landing-background.svg');
-    background-size: cover;
+	height: 100vh;
+	width: 100vw;
+	background-image: url('/landing-background.svg');
+	background-size: cover;
 
-    display: flex;
-    gap: 178px;
-    flex-direction: column;
-    position: relative;
+	display: flex;
+	gap: 178px;
+	flex-direction: column;
+	position: relative;
 }
 
 .top {
-    height: 118px;
-    display: flex;
-    gap: 401px;
+	height: 118px;
+	display: flex;
+	gap: 401px;
 }
 
 .logo {
-    height: 52px;
-    width: 52px;
+	height: 52px;
+	width: 52px;
 }
 .navbar {
-    width: 100%;
-    align-items: center;
-    display: flex;
-    padding: 45px 78px;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 27px;
-    justify-content: space-between;
-}
-
-
-.nav-wrapper {
-    color: white;
-    display: flex;
-    gap : 60px;
+	width: 100%;
+	align-items: center;
+	display: flex;
+	padding: 45px 78px;
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 27px;
+	justify-content: space-between;
 }
 
 .nav-wrapper {
-    cursor: pointer;
+	color: white;
+	display: flex;
+	gap: 60px;
+}
+
+.nav-wrapper {
+	cursor: pointer;
 }
 
 .google {
-    height: 40px;
-    width: 116px;
-    cursor: pointer;
+	height: 40px;
+	width: 116px;
+	cursor: pointer;
 }
 
 .middle {
-    display: flex;
-    gap: 97px;
-    flex-direction: column;
-    align-items: center;
+	display: flex;
+	gap: 97px;
+	flex-direction: column;
+	align-items: center;
 }
 
 .title {
-    font-family: 'Cardo';
-    font-weight: 400;
-    font-size: 200px;
-    color : white;
+	font-family: 'Cardo';
+	font-weight: 400;
+	font-size: 200px;
+	color: white;
 }
 
 .bottom {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .explore-now {
-    height: 57px;
-    width: 196px;
-    cursor: pointer;
+	height: 57px;
+	width: 196px;
+	cursor: pointer;
+	-webkit-transition: 0.3s ease;
+	transition: 0.3s ease;
+}
+
+.explore-now:hover {
+	scale: 1.05;
 }
 
 .footer {
-    display: flex;
-    gap: 25px;
-    position: absolute;
-    left: 78px;
-    bottom: 60px;
+	display: flex;
+	gap: 25px;
+	position: absolute;
+	left: 78px;
+	bottom: 60px;
 }
 
 .footer img {
-    cursor: pointer;
+	cursor: pointer;
 }
-
-

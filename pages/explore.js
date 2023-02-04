@@ -81,6 +81,7 @@ export default function Explore() {
 				position='fixed'
 				bg='#f7f7f7'
 				height='90px'
+				userInfo={true}
 			/>
 			<div className={styles['wrapper']}>
 				<div className={styles['left']}>
