@@ -31,15 +31,21 @@
     justify-content: space-between;
 }
 
+
 .nav-wrapper {
     color: white;
     display: flex;
     gap : 60px;
 }
 
+.nav-wrapper {
+    cursor: pointer;
+}
+
 .google {
     height: 40px;
     width: 116px;
+    cursor: pointer;
 }
 
 .middle {
@@ -65,6 +71,7 @@
 .explore-now {
     height: 57px;
     width: 196px;
+    cursor: pointer;
 }
 
 .footer {
@@ -74,3 +81,9 @@
     left: 78px;
     bottom: 60px;
 }
+
+.footer img {
+    cursor: pointer;
+}
+
+
