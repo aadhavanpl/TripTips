@@ -142,6 +142,8 @@ export default function Explore() {
 							data.map((item, index) => (
 								<div key={index}>
 									<Card
+										user_email={user[0]?.email}
+										location_id={item?.location_id}
 										name={item?.name}
 										ranking={item?.ranking}
 										type={cardType}
@@ -154,7 +156,6 @@ export default function Explore() {
 										website={item?.website}
 										web_url={item?.web_url}
 										description={item?.description}
-										user_email={user[0]?.email}
 									/>
 								</div>
 							))}

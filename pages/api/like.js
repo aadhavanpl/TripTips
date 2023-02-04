@@ -8,7 +8,7 @@ export default async function handler(req, res) {
 	try {
 		const temp = req.body.data
 		const querySql =
-			'INSERT INTO starred_places (place_id,user_email,name,ranking,place_type,photo,rating,num_reviews,phone,address,website,web_url,description) VALUES (NULL,?,?,?,?,?,?,?,?,?,?,?,?);'
+			'INSERT INTO starred_places (place_id,user_email,location_id,name,ranking,place_type,photo,rating,num_reviews,phone,address,website,web_url,description) VALUES (NULL,?,?,?,?,?,?,?,?,?,?,?,?,?);'
 		const valuesParams = Object.values(temp)
 		const data = await query({ query: querySql, values: valuesParams })
 		res.status(201).json(data)

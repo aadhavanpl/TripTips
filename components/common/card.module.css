@@ -82,13 +82,15 @@
 	gap: 8px;
 }
 
-.right-top-right-top img {
+.right-top-right-top img,
+.right-top-right-top svg {
 	cursor: pointer;
 	-webkit-transition: 0.3s ease;
 	transition: 0.3s ease;
 }
 
-.right-top-right-top img:hover {
+.right-top-right-top img:hover,
+.right-top-right-top svg:hover {
 	scale: 1.1;
 }
 
