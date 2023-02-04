@@ -4,6 +4,7 @@ import { Draggable, Map, Marker } from 'pigeon-maps'
 import React, { useEffect, useState } from 'react'
 import styles from '../components/explore.module.css'
 import axios from 'axios'
+import Loader from '../components/common/Loader'
 
 import { useGlobalContext } from '@/lib/global-context'
 
@@ -11,25 +12,31 @@ export default function Explore() {
 	const { user } = useGlobalContext()
 
 	const [data, setData] = useState([])
-	const [type, setType] = useState('restaurants')
-	const [lat, setLat] = useState([24.659341, 26.068964])
-	const [long, setLong] = useState([50.864017, 51.699535])
+	const [type, setType] = useState('attractions')
 
-	const [anchor, setAnchor] = useState([50.879, 4.6997])
-	const [center, setCenter] = useState([50.879, 4.6997])
+	const [anchor, setAnchor] = useState([11.2588, 75.7804])
+	const [center, setCenter] = useState([11.2588, 75.7804])
+
+	const [lat, setLat] = useState([11.2588, 11.285])
+	const [long, setLong] = useState([75.7804, 75.8])
+
 	const [zoom, setZoom] = useState(11)
+
+	const [loader, setLoader] = useState(false)
 
 	useEffect(() => {
 		async function getData() {
+			setLoader(true)
+			console.log(anchor[0], anchor[1])
 			const options = {
 				method: 'GET',
 				url: `https://travel-advisor.p.rapidapi.com/${type}/list-in-boundary`,
 				params: {
-					tr_longitude: long[0],
-					tr_latitude: lat[0],
-					bl_longitude: long[1],
-					bl_latitude: lat[1],
-					currency: 'USD',
+					tr_longitude: anchor[1] + 0.01,
+					tr_latitude: anchor[0] + 0.01,
+					bl_longitude: anchor[1] - 0.01,
+					bl_latitude: anchor[0] - 0.01,
+					currency: 'INR',
 					lunit: 'km',
 					lang: 'en_US',
 				},
@@ -41,12 +48,13 @@ export default function Explore() {
 			const response = await axios.request(options)
 			console.log(response)
 			setData(response.data.data)
+			setLoader(false)
 		}
 		getData()
-	}, [type, lat, long])
+	}, [type, anchor])
 	return (
 		<div className={styles['container']}>
-			<Navbar color='black' border='1px solid #C0C0C0' />
+			<Navbar color='black' border='1px solid #C0C0C0' position='fixed' bg='#f7f7f7' />
 			<div className={styles['wrapper']}>
 				<div className={styles['left']}>
 					<div className={styles['map-container']}>
@@ -71,7 +79,7 @@ export default function Explore() {
 				</div>
 				<div className={styles['right']}>
 					<div className={styles['total-results']}>
-						5 results found!
+						<span>{data?.length} results found!</span>
 						<div className={styles['line']}></div>
 					</div>
 					<div className={styles['content']}>
@@ -98,6 +106,7 @@ export default function Explore() {
 					</div>
 				</div>
 			</div>
+			<Loader show={loader} />
 		</div>
 	)
 }

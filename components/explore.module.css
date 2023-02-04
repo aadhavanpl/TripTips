@@ -1,5 +1,6 @@
 .container {
 	background: #f7f7f7;
+	position: relative;
 }
 
 .wrapper {
@@ -15,18 +16,22 @@
 
 	background: #f1f1f1;
 	border-right: 1px solid #c0c0c0;
+
+	position: fixed;
+	margin-top: 119px;
+	overflow: hidden;
 }
 
 .right {
-	padding: 68px 98px;
-	width: 100%;
+	display: flex;
+	flex-direction: column;
+	padding-top: 186px;
+	width: calc(100vw - 440px);
+	align-items: center;
+	margin-left: 440px;
 }
 
 .total-results {
-	display: flex;
-	flex-direction: column;
-	gap: 6px;
-
 	font-weight: 400;
 	font-size: 22px;
 	line-height: 33px;
@@ -35,11 +40,11 @@
 
 .line {
 	border-bottom: 1px solid #c0c0c0;
+	width: 900px;
+	margin-top: 5px;
 }
 
 .content {
-	display: flex;
-	flex-direction: column;
 	margin-top: 68px;
 }
 
@@ -52,7 +57,4 @@
 	height: fit-content;
 	width: fit-content;
 	overflow: hidden;
-}
-
-.map-container {
 }
