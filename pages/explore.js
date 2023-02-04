@@ -71,7 +71,7 @@ export default function Explore() {
 			setCardType(type)
 			setLoader(false)
 		}
-		// getData()
+		getData()
 	}, [anchor])
 	return (
 		<div className={styles['container']}>
@@ -158,6 +158,7 @@ export default function Explore() {
 										website={item?.website}
 										web_url={item?.web_url}
 										description={item?.description}
+										like={true}
 									/>
 								</div>
 							))}
