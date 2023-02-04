@@ -7,6 +7,7 @@
 	display: flex;
 	position: relative;
 	margin: 50px;
+	height: 263px;
 }
 
 .card-img {
@@ -41,9 +42,18 @@
 .right-top-left {
 	display: flex;
 	flex-direction: column;
+}
+
+.name {
 	font-weight: 400;
 	font-size: 22px;
 	line-height: 33px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+	justify-content: center;
 }
 
 .right-top-left span {
@@ -51,6 +61,12 @@
 	font-size: 15px;
 	line-height: 22px;
 	color: #8e8e8e;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+	justify-content: center;
 }
 
 .right-top-right {
@@ -66,15 +82,25 @@
 	gap: 8px;
 }
 
+.right-top-right-top img {
+	cursor: pointer;
+	-webkit-transition: 0.3s ease;
+	transition: 0.3s ease;
+}
+
+.right-top-right-top img:hover {
+	scale: 1.1;
+}
+
 .line {
 	border-bottom: 1px solid #c0c0c0;
-	margin-top: 10px;
+	margin-top: 3px;
 }
 
 .right-bottom {
 	display: flex;
 	justify-content: space-between;
-	margin-top: 13px;
+	margin-top: 10px;
 	gap: 22px;
 }
 
@@ -111,6 +137,15 @@
 	font-size: 11px;
 	line-height: 16px;
 	color: #8e8e8e;
+	width: 190px;
+}
+
+.right-bottom-right-info span {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
 }
 
 .right-bottom-right-info img {
@@ -122,6 +157,9 @@
 	height: 40px;
 	width: 190px;
 	margin-top: 8px;
+	cursor: pointer;
+	-webkit-transition: 0.3s ease;
+	transition: 0.3s ease;
 }
 
 .content {
@@ -133,4 +171,8 @@
 	display: -webkit-box;
 	-webkit-line-clamp: 5;
 	-webkit-box-orient: vertical;
+}
+
+.more-info:hover {
+	scale: 1.05;
 }

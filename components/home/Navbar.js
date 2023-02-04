@@ -3,13 +3,10 @@ import React, { useEffect } from 'react'
 import styles from './navbar.module.css'
 import { useGlobalContext } from '@/lib/global-context'
 
-export default function Navbar({ color }) {
+export default function Navbar({ color, border }) {
 	const { signIn, user } = useGlobalContext()
-	useEffect(() => {
-		console.log(user)
-	}, [user])
 	return (
-		<div className={styles['container']}>
+		<div className={styles['container']} style={{ borderBottom: border }}>
 			<div className={styles['logo-wrapper']}>
 				<img src='/logo.svg' className={styles['logo']} />
 			</div>

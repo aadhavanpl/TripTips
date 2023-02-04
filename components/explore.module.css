@@ -1,0 +1,58 @@
+.container {
+	background: #f7f7f7;
+}
+
+.wrapper {
+	display: flex;
+}
+
+.left {
+	display: flex;
+	flex-direction: column;
+	padding: 30px;
+	min-width: 440px;
+	height: calc(100vh - 118px);
+
+	background: #f1f1f1;
+	border-right: 1px solid #c0c0c0;
+}
+
+.right {
+	padding: 68px 98px;
+	width: 100%;
+}
+
+.total-results {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+
+	font-weight: 400;
+	font-size: 22px;
+	line-height: 33px;
+	color: #454545;
+}
+
+.line {
+	border-bottom: 1px solid #c0c0c0;
+}
+
+.content {
+	display: flex;
+	flex-direction: column;
+	margin-top: 68px;
+}
+
+/* map */
+
+.map-cover {
+	border: 1px solid #c0c0c0;
+	border-radius: 20px;
+	display: flex;
+	height: fit-content;
+	width: fit-content;
+	overflow: hidden;
+}
+
+.map-container {
+}
