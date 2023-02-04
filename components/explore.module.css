@@ -12,13 +12,13 @@
 	flex-direction: column;
 	padding: 30px;
 	min-width: 440px;
-	height: calc(100vh - 118px);
+	height: calc(100vh - 90px);
 
 	background: #f1f1f1;
 	border-right: 1px solid #c0c0c0;
 
 	position: fixed;
-	margin-top: 119px;
+	margin-top: 90px;
 	overflow: hidden;
 }
 

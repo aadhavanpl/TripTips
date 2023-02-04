@@ -10,6 +10,13 @@
 .logo-wrapper {
 	width: 116px;
 	height: 52px;
+	cursor: pointer;
+	-webkit-transition: 0.3s ease;
+	transition: 0.3s ease;
+}
+
+.logo-wrapper:hover {
+	scale: 1.05;
 }
 
 .logo {
@@ -20,10 +27,6 @@
 .nav-wrapper {
 	display: flex;
 	gap: 60px;
-	align-items: center;
-}
-
-.nav-wrapper {
 	font-weight: 600;
 	font-size: 18px;
 	line-height: 27px;
@@ -32,6 +35,16 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.nav-wrapper span {
+	cursor: pointer;
+	-webkit-transition: 0.3s ease;
+	transition: 0.3s ease;
+}
+
+.nav-wrapper span:hover {
+	scale: 1.05;
 }
 
 .signin {

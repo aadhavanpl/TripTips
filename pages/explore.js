@@ -70,11 +70,17 @@ export default function Explore() {
 			setCardType(type)
 			setLoader(false)
 		}
-		getData()
+		// getData()
 	}, [anchor])
 	return (
 		<div className={styles['container']}>
-			<Navbar color='black' border='1px solid #C0C0C0' position='fixed' bg='#f7f7f7' />
+			<Navbar
+				color='black'
+				border='1px solid #C0C0C0'
+				position='fixed'
+				bg='#f7f7f7'
+				height='90px'
+			/>
 			<div className={styles['wrapper']}>
 				<div className={styles['left']}>
 					<div className={styles['map-container']}>
