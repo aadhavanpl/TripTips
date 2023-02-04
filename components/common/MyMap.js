@@ -1,12 +1,31 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './my-map.module.css'
-import { Map, Marker } from 'pigeon-maps'
+import { Draggable, Map, Marker } from 'pigeon-maps'
 
 export default function MyMap() {
-	const coordinates = { lat: 0, lng: 0 } < Map
+	const [anchor, setAnchor] = useState([50.879, 4.6997])
+	const [center, setCenter] = useState([50.879, 4.6997])
+	const [zoom, setZoom] = useState(11)
+
 	return (
-		<Map defaultCenter={[24.659341, 50.864017]} defaultZoom={11} width={380} height={380}>
-			<Marker width={20} anchor={[24.659341, 50.864017]} />
-		</Map>
+		<div className={styles['container']}>
+			<div className={styles['map-cover']}>
+				<Map
+					defaultZoom={11}
+					width={380}
+					height={380}
+					center={center}
+					zoom={zoom}
+					onBoundsChanged={({ center, zoom }) => {
+						setCenter(center)
+						setZoom(zoom)
+					}}
+				>
+					<Draggable anchor={anchor} onDragEnd={setAnchor}>
+						<Marker width={40} color='#eb3a44' />
+					</Draggable>
+				</Map>
+			</div>
+		</div>
 	)
 }

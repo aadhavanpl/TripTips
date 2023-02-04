@@ -46,7 +46,7 @@ export default function Home() {
 			</Head>
 			<button onClick={signIn}>Sign in </button>
 			<MyMap />
-			{data?.length &&
+			{data?.length > 0 &&
 				data.map((item, index) => (
 					<div key={index}>
 						<Card

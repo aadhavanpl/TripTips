@@ -1,0 +1,8 @@
+.map-cover {
+	border: 1px solid #c0c0c0;
+	border-radius: 20px;
+	display: flex;
+	height: fit-content;
+	width: fit-content;
+	overflow: hidden;
+}
