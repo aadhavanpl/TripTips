@@ -4,6 +4,7 @@ import axios from 'axios'
 import Card from '@/components/common/Card'
 
 import { useGlobalContext } from '@/lib/global-context'
+import MyMap from '@/components/common/MyMap'
 
 export default function Home() {
 	const { signIn } = useGlobalContext()
@@ -44,6 +45,7 @@ export default function Home() {
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 			<button onClick={signIn}>Sign in </button>
+			<MyMap />
 			{data?.length &&
 				data.map((item, index) => (
 					<div key={index}>
