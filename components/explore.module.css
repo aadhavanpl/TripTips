@@ -31,7 +31,7 @@
 .right {
 	display: flex;
 	flex-direction: column;
-	padding-top: 186px;
+	padding-top: 150px;
 	width: calc(100vw - 440px);
 	align-items: center;
 	margin-left: 440px;
@@ -39,19 +39,22 @@
 
 .total-results {
 	font-weight: 400;
-	font-size: 22px;
+	font-size: 20px;
 	line-height: 33px;
 	color: #454545;
 }
 
 .line {
 	border-bottom: 1px solid #c0c0c0;
-	width: 900px;
-	margin-top: 5px;
+	width: 950px;
+	margin-top: 8px;
 }
 
 .content {
 	margin-top: 68px;
+	display: flex;
+	flex-direction: column;
+	gap: 90px;
 }
 
 /* map */

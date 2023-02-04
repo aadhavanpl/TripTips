@@ -113,7 +113,13 @@ export default function Card({
 										{num_reviews}
 									</div>
 								</div>
-								<div className={styles['content']}>{description}</div>
+								{description ? (
+									<div className={styles['content']}>{description}</div>
+								) : (
+									<div className={styles['content']}>
+										<span>Description not provided</span>
+									</div>
+								)}
 							</div>
 							<div className={styles['right-bottom-right']}>
 								{phone && (

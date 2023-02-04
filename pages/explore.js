@@ -39,6 +39,7 @@ export default function Explore() {
 			}
 			const response = await axios.get('http://api.positionstack.com/v1/forward', { params })
 			setAnchor([response?.data?.data[0]?.latitude, response?.data?.data[0]?.longitude])
+			setCenter([response?.data?.data[0]?.latitude, response?.data?.data[0]?.longitude])
 			setLoader(false)
 		}
 		getLocation()
