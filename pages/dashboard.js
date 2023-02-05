@@ -2,18 +2,21 @@ import React, { useEffect, useState } from 'react'
 import styles1 from '../components/dashboard-profile-card.module.css'
 import styles from '../components/dashboard.module.css'
 import Navbar from '@/components/home/Navbar'
+import Loader from '../components/common/Loader'
 
 import { useGlobalContext } from '@/lib/global-context'
 import Card from '@/components/common/Card'
-import { signOut } from 'firebase/auth'
 
 export default function Dashboard() {
 	const { user, signOut } = useGlobalContext()
 	const [fetched, setFetched] = useState([])
 
+	const [loader, setLoader] = useState(false)
+
 	useEffect(() => {
 		async function getFetched() {
 			if (!user || !user?.length) return
+			setLoader(true)
 			const data = { user_email: user[0]?.email }
 			const apiUrlEndpoint = 'http://localhost:3000/api/fetch-liked'
 			const response = await fetch(apiUrlEndpoint, {
@@ -26,6 +29,7 @@ export default function Dashboard() {
 			const res = await response.json()
 			console.log(res)
 			setFetched(res)
+			setLoader(false)
 		}
 		getFetched()
 	}, [user])
@@ -103,6 +107,7 @@ export default function Dashboard() {
 					</div>
 				</div>
 			</div>
+			<Loader show={loader} />
 		</>
 	)
 }
