@@ -34,7 +34,7 @@ export default function SmallCard({
 			web_url: web_url || '',
 			description: description || '',
 		}
-		const apiUrlEndpoint = 'http://localhost:3000/api/like'
+		const apiUrlEndpoint = 'https://trip-tips.vercel.app//api/like'
 		const response = await fetch(apiUrlEndpoint, {
 			method: 'POST',
 			body: JSON.stringify({ data }),

@@ -15,7 +15,7 @@ export default function Dashboard() {
 		async function getFetched() {
 			if (!user || !user?.length) return
 			const data = { user_email: user[0]?.email }
-			const apiUrlEndpoint = 'http://localhost:3000/api/fetch-liked'
+			const apiUrlEndpoint = 'https://trip-tips.vercel.app//api/fetch-liked'
 			const response = await fetch(apiUrlEndpoint, {
 				method: 'POST',
 				body: JSON.stringify({ data }),
