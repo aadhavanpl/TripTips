@@ -44,10 +44,9 @@ export default function Travel() {
 			const response = await axios.get('http://api.positionstack.com/v1/forward', { params })
 			setAnchor([response?.data?.data[0]?.latitude, response?.data?.data[0]?.longitude])
 
-			var tempType = 'hotels'
-			const options = {
+			const options1 = {
 				method: 'GET',
-				url: `https://travel-advisor.p.rapidapi.com/${tempType}/list-in-boundary`,
+				url: `https://travel-advisor.p.rapidapi.com/hotels/list-in-boundary`,
 				params: {
 					tr_longitude: response?.data?.data[0]?.longitude + 0.03,
 					tr_latitude: response?.data?.data[0]?.latitude + 0.03,
@@ -56,27 +55,61 @@ export default function Travel() {
 					currency: 'INR',
 					lunit: 'km',
 					lang: 'en_US',
+					limit: duration,
 				},
 				headers: {
 					'X-RapidAPI-Key': process.env.NEXT_PUBLIC_RAPID_API_KEY,
 					'X-RapidAPI-Host': process.env.NEXT_PUBLIC_RAPID_HOST,
 				},
 			}
-			const response1 = await axios.request(options)
+			const response1 = await axios.request(options1)
 			console.log(response1)
 			setHotels(response1.data.data)
 			// setCardType(type)
 
-			tempType = 'attractions'
-			const response2 = await axios.request(options)
+			const options2 = {
+				method: 'GET',
+				url: `https://travel-advisor.p.rapidapi.com/attractions/list-in-boundary`,
+				params: {
+					tr_longitude: response?.data?.data[0]?.longitude + 0.03,
+					tr_latitude: response?.data?.data[0]?.latitude + 0.03,
+					bl_longitude: response?.data?.data[0]?.longitude - 0.03,
+					bl_latitude: response?.data?.data[0]?.latitude - 0.03,
+					currency: 'INR',
+					lunit: 'km',
+					lang: 'en_US',
+					limit: duration,
+				},
+				headers: {
+					'X-RapidAPI-Key': process.env.NEXT_PUBLIC_RAPID_API_KEY,
+					'X-RapidAPI-Host': process.env.NEXT_PUBLIC_RAPID_HOST,
+				},
+			}
+			const response2 = await axios.request(options2)
 			console.log(response2)
 			setAttractions(response2.data.data)
 
-			tempType = 'restaurants'
-			const response3 = await axios.request(options)
+			const options3 = {
+				method: 'GET',
+				url: `https://travel-advisor.p.rapidapi.com/restaurants/list-in-boundary`,
+				params: {
+					tr_longitude: response?.data?.data[0]?.longitude + 0.03,
+					tr_latitude: response?.data?.data[0]?.latitude + 0.03,
+					bl_longitude: response?.data?.data[0]?.longitude - 0.03,
+					bl_latitude: response?.data?.data[0]?.latitude - 0.03,
+					currency: 'INR',
+					lunit: 'km',
+					lang: 'en_US',
+					limit: duration,
+				},
+				headers: {
+					'X-RapidAPI-Key': process.env.NEXT_PUBLIC_RAPID_API_KEY,
+					'X-RapidAPI-Host': process.env.NEXT_PUBLIC_RAPID_HOST,
+				},
+			}
+			const response3 = await axios.request(options3)
 			console.log(response3)
 			setRestaurants(response3.data.data)
-
 			setLoader(false)
 		}
 		getLocation()
@@ -95,7 +128,7 @@ export default function Travel() {
 	}
 	return (
 		<>
-			{/* <Navbar
+			<Navbar
 				color='black'
 				border='1px solid #C0C0C0'
 				position='fixed'
@@ -122,10 +155,12 @@ export default function Travel() {
 					<img src='/filter-apply.svg' className={styles['apply']} onClick={handleApply} />
 				</div>
 				<div className={styles['content']}>
-					<div className={styles['col']}>
-						{[...Array(Math.ceil(Number(duration)))].map((e, index) => {
-							;<span>Day {index + 1}</span>
-						})}
+					<div className={styles['col-numb']}>
+						{[...Array(Math.ceil(Number(duration)))].map((e, index) => (
+							<span key={index} className={styles['num']}>
+								Day {index + 1}
+							</span>
+						))}
 					</div>
 					<div className={styles['col']}>
 						{hotels?.length > 0 &&
@@ -136,7 +171,7 @@ export default function Travel() {
 										location_id={item?.location_id}
 										name={item?.name}
 										ranking={item?.ranking}
-										type={cardType}
+										type='hotels'
 										photo={item?.photo?.images?.medium?.url}
 										rating={item?.rating}
 										num_reviews={item?.num_reviews}
@@ -159,7 +194,7 @@ export default function Travel() {
 										location_id={item?.location_id}
 										name={item?.name}
 										ranking={item?.ranking}
-										type={cardType}
+										type='attractions'
 										photo={item?.photo?.images?.medium?.url}
 										rating={item?.rating}
 										num_reviews={item?.num_reviews}
@@ -182,7 +217,7 @@ export default function Travel() {
 										location_id={item?.location_id}
 										name={item?.name}
 										ranking={item?.ranking}
-										type={cardType}
+										type='restaurants'
 										photo={item?.photo?.images?.medium?.url}
 										rating={item?.rating}
 										num_reviews={item?.num_reviews}
@@ -198,22 +233,7 @@ export default function Travel() {
 					</div>
 				</div>
 			</div>
-			<Loader show={loader} /> */}
-			<SmallCard
-				user_email='aadhavanlenin@gmail.com'
-				location_id='10525'
-				name='Lorem ipsum'
-				ranking='Lorem ipsum'
-				type='restaurant'
-				photo='/attraction.png'
-				rating='4'
-				num_reviews='1024'
-				phone='1506546'
-				address='7skukfu sjf'
-				website='asfasdf'
-				web_url='asfasd'
-				description='sdfklnsfjk'
-			/>
+			<Loader show={loader} />
 		</>
 	)
 }

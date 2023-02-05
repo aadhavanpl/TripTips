@@ -78,4 +78,28 @@
 
 .content {
 	display: flex;
+	gap: 40px;
+	margin-top: 60px;
+}
+
+.col {
+	display: flex;
+	flex-direction: column;
+	gap: 50px;
+}
+.col-numb {
+	display: flex;
+	flex-direction: column;
+	font-weight: 500;
+	font-size: 30px;
+	line-height: 45px;
+	color: #000000;
+	align-items: center;
+	justify-content: center;
+	gap: 50px;
+	margin-top: 70px;
+}
+
+.num {
+	height: 180px;
 }
