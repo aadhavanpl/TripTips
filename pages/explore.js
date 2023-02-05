@@ -113,12 +113,6 @@ export default function Explore() {
 						/>
 						<div className={styles['filter-button-wrapper']}>
 							<FilterButton
-								value='hotels'
-								name='Hotels'
-								checked={type == 'hotels'}
-								onClick={() => setType('hotels')}
-							/>
-							<FilterButton
 								value='restaurants'
 								name='Restaurants'
 								checked={type == 'restaurants'}
@@ -129,6 +123,12 @@ export default function Explore() {
 								name='Attractions'
 								checked={type == 'attractions'}
 								onClick={() => setType('attractions')}
+							/>
+							<FilterButton
+								value='hotels'
+								name='Hotels'
+								checked={type == 'hotels'}
+								onClick={() => setType('hotels')}
 							/>
 						</div>
 						<img src='/apply.svg' onClick={handleApply} className={styles['apply']} />

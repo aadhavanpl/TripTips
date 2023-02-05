@@ -26,9 +26,9 @@ export default function Navbar({ color, border, position, bg, height, userInfo }
 						Explore
 					</span>
 				</Link>
-				<Link href='/contact'>
+				<Link href='/travel'>
 					<span style={{ color: color }} className={styles['nav-link']}>
-						Contact
+						Travel
 					</span>
 				</Link>
 			</div>
