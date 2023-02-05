@@ -85,7 +85,7 @@ export default function Dashboard() {
 											name={item?.name}
 											ranking={item?.ranking}
 											type={item?.place_type}
-											photo={item?.photo?.images?.medium?.url}
+											photo={item?.photo}
 											rating={item?.rating}
 											num_reviews={item?.num_reviews}
 											is_closed={item?.is_closed}
