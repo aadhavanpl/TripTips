@@ -5,9 +5,10 @@ import Navbar from '@/components/home/Navbar'
 
 import { useGlobalContext } from '@/lib/global-context'
 import Card from '@/components/common/Card'
+import { signOut } from 'firebase/auth'
 
 export default function Dashboard() {
-	const { user } = useGlobalContext()
+	const { user, signOut } = useGlobalContext()
 	const [fetched, setFetched] = useState([])
 
 	useEffect(() => {
@@ -46,6 +47,7 @@ export default function Dashboard() {
 							name={user[0]?.displayName}
 							email={user[0]?.email}
 							img={user[0]?.photoURL}
+							signOut={signOut}
 						/>
 					)}
 				</div>
@@ -105,7 +107,7 @@ export default function Dashboard() {
 	)
 }
 
-function DashboardProfileCard({ name, email, img }) {
+function DashboardProfileCard({ name, email, img, signOut }) {
 	return (
 		<div className={styles1['container']}>
 			<div className={styles1['wrapper']}>
@@ -115,6 +117,7 @@ function DashboardProfileCard({ name, email, img }) {
 					{email && <span>{email}</span>}
 				</div>
 			</div>
+			<img src='/logout.svg' onClick={signOut} className={styles1['signout']} />
 		</div>
 	)
 }

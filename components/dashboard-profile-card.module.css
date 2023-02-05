@@ -38,3 +38,16 @@
 
 	margin-top: -5px;
 }
+
+.signout {
+	height: 30px;
+	width: 30px;
+	cursor: pointer;
+	cursor: pointer;
+	-webkit-transition: 0.3s ease;
+	transition: 0.3s ease;
+}
+
+.signout:hover {
+	scale: 1.05;
+}
