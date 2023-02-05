@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
+import styles from './small-card.module.css'
 
 export default function SmallCard({
 	user_email,
@@ -60,7 +61,7 @@ export default function SmallCard({
 					<div className={styles['right']}>
 						<div className={styles['right-top']}>
 							<div className={styles['right-top-left']}>
-								{name}
+								<div className={styles['name']}>{name}</div>
 								<span>{ranking}</span>
 							</div>
 							<div className={styles['right-top-right']}>
@@ -88,25 +89,25 @@ export default function SmallCard({
 									/>
 								</svg>
 							</div>
-							<div className={styles['right-bottom']}>
-								<div className={styles['right-bottom-top']}>
-									<div className={styles['stars-wrapper']}>
-										{rating &&
-											[...Array(Math.ceil(Number(rating)))].map((e, index) => (
-												<img src='/star.svg' key={index} />
-											))}
-									</div>
-									<div className={styles['right-bottom-left-top-right']}>
-										<img src='/users.svg' />
-										{num_reviews}
-									</div>
+						</div>
+						<div className={styles['right-bottom']}>
+							<div className={styles['right-bottom-top']}>
+								<div className={styles['stars-wrapper']}>
+									{rating &&
+										[...Array(Math.ceil(Number(rating)))].map((e, index) => (
+											<img src='/star.svg' key={index} />
+										))}
 								</div>
-								{web_url && (
-									<Link href={web_url}>
-										<img src='/more-info-small.svg' className={styles['more-info']} />
-									</Link>
-								)}
+								<div className={styles['right-bottom-left-top-right']}>
+									<img src='/users.svg' />
+									{num_reviews}
+								</div>
 							</div>
+							{web_url && (
+								<Link href={web_url}>
+									<img src='/more-info-small.svg' className={styles['more-info']} />
+								</Link>
+							)}
 						</div>
 					</div>
 				</div>
